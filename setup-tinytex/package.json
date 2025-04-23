@@ -1,0 +1,39 @@
+{
+  "name": "setup-tinytex",
+  "version": "0.0.0",
+  "private": true,
+  "description": "TinyTeX LaTeX setup action",
+  "main": "src/setup-tinytex.ts",
+  "scripts": {
+    "build": "ncc build --source-map --minify",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-lib/actions.git",
+    "directory": "setup-tinytex"
+  },
+  "keywords": [
+    "actions",
+    "r",
+    "setup",
+    "LaTeX",
+    "TinyTeX"
+  ],
+  "author": "jimhester",
+  "license": "MIT",
+  "homepage": "https://github.com/r-lib/actions/tree/v2/setup-tinytex",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/exec": "^1.1.1",
+    "@actions/tool-cache": "^2.0.1",
+    "@actions/io": "^1.1.3",
+    "semver": "^7.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.10",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  }
+}

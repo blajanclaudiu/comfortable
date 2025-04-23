@@ -1,0 +1,38 @@
+on:
+  push:
+    branches: [main, master, v2-branch]
+  pull_request:
+    branches: [main, master, v2-branch]
+  workflow_dispatch:
+
+name: "setup-tinytex test"
+
+permissions: read-all
+
+jobs:
+  tinytex:
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: macos-latest   }
+          - { os: windows-latest }
+          - { os: ubuntu-latest  }
+
+    steps:
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b
+
+      - uses: ./setup-tinytex
+        env:
+          TINYTEX_INSTALLER: TinyTeX
+
+      - run: tlmgr --version
+
+      - run: tlmgr update --self
+
+      - run: tlmgr --version
+
+      - run: tlmgr install colortbl grfext ae
